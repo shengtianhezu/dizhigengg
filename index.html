@@ -16,12 +16,33 @@
             font-size: 24px;
             font-weight: bold;
         }
+        .countdown {
+            font-size: 18px;
+        }
     </style>
+    <script>
+        function startCountdown() {
+            var seconds = 5;
+            var countdownElement = document.getElementById('countdown');
+
+            var countdownInterval = setInterval(function () {
+                countdownElement.innerHTML = seconds + "秒后跳转...";
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
 </head>
 <body>
     <div class="message">
         <p class="big-text">我们的网站已经变更，正在带您前往新的地址...</p>
         <p>如果页面没有自动跳转，请点击<a href="https://i.hezu.life">https://i.hezu.life</a>。</p>
+        <p class="countdown" id="countdown"></p>
     </div>
 </body>
 </html>
